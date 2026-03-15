@@ -4,7 +4,6 @@ from .token_types import TokenType
 
 class Lexer:
     def __init__(self, code):
-        print("Lexer initialized1")
         self.code = code + '~'  ## source code
         self.lexbeg = 0  ## beginning of lexeme
         self.fwdptr = 0  ## forward pointer for scanning
@@ -14,7 +13,7 @@ class Lexer:
         self.pos = 0  ## position in the code for error reporting
         self.column = 1  ## column number for error reporting
         self.symbol_count =  0  ## count of symbols for generating unique IDs in the symbol table
-        print("Lexer initialized2")
+        
     
 
     def next_char(self):
@@ -37,14 +36,15 @@ class Lexer:
         keywords = {
             "if": TokenType.IF,
             "else": TokenType.ELSE,
-            "while": TokenType.WHILE
+            "while": TokenType.WHILE,
+            "let": TokenType.LET
+
         }
         if lexeme in keywords:
             return "keyword"
         else:
             return TokenType.IDENTIFIER
     def next_token(self):
-        print("Next token called\n")
         self.state = 0
         c = ""
 
@@ -60,7 +60,6 @@ class Lexer:
                         if c == "\n":
                             self.line_no += 1
                             self.column = 1
-                            print(f"Line :{self.line_no}")
                         if c == "~":
                             self.state = -1
                     elif c == "<":
@@ -73,7 +72,7 @@ class Lexer:
                         self.state = 10
                     elif c.isdigit():
                         self.state = 22
-                    elif self.isSymbol(c):
+                    elif c in [".", "<", ">", ",", "{", "}", "(", ")", "#", ";"]:
                         self.state = 24
                     elif c == "+":
                         self.state = 12
@@ -199,21 +198,22 @@ class Lexer:
                 case 24:
                     self.lexbeg = self.fwdptr
                     return Token("symbol", c, self.line_no, self.column)
+        # EOF fallback
+        return Token("EOF", "EOF", self.line_no, self.column)
                 
 
-code = """
-x = 10 + 20
-while (x>0){
-    x = x - 1
-}
-"""
+# code = """
+# let x = 10 + 20
+# """
 
-lexer = Lexer(code)
+# lexer = Lexer(code)
 
-while True:
+# while True:
 
-    token = lexer.next_token()
+#     token = lexer.next_token()
 
-    print(token)
-    if token.type == "EOF":
-        break
+#     print(token)
+#     if token.type == "EOF":
+#         break
+
+    

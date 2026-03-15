@@ -26,6 +26,7 @@ class TokenType:
     IF = "IF"
     ELSE = "ELSE"
     WHILE = "WHILE"
+    LET = "LET"
 
     # misc
     SEMICOLON = "SEMICOLON"
