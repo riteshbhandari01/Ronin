@@ -56,7 +56,7 @@ lexer/
 ---
 
 ## 🔄 State Diagram (Simplified)
-![App Screenshot](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZEsJYqnbyI6HlMLrx9GNVhETYrgXIh4J8y0PEwGv_CgSlITkQigpTkvaXjGl9Mzt0beNmQ08e9m0mQCBpm1BUgSbsR0l6u8Pu73ZzRFOHMw42m7sEq5B-_2PtpFYYRmCjrpLI1099FQE/s1600/Untitled.png)
+![App Screenshot](https://drive.google.com/file/d/1nO3O_wilaKjr-QGmUFeOtL5tcrdJxNii/view?usp=sharing)
 
 Final states return tokens
 
