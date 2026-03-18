@@ -84,6 +84,8 @@ class Lexer:
                         self.state = 19
                     elif c == "%":
                         self.state = 20
+                    elif c=='"':
+                        self.state = 25
                     else:
                         self.state = -1
                     continue
@@ -198,12 +200,23 @@ class Lexer:
                 case 24:
                     self.lexbeg = self.fwdptr
                     return Token("symbol", c, self.line_no, self.column)
+                case 25:
+                    c = self.next_char()
+                    if c == '"' :
+                        self.state = 26
+                    else:
+                        self.state = 25
+                    continue
+                case 26:
+                    lexeme = self.code[self.lexbeg : self.fwdptr]
+                    self.lexbeg = self.fwdptr
+                    return Token("string", lexeme, self.line_no, self.column)
         # EOF fallback
         return Token("EOF", "EOF", self.line_no, self.column)
                 
 
 # code = """
-# let x = 10 + 20
+# "dfsa11111@11fasf"
 # """
 
 # lexer = Lexer(code)

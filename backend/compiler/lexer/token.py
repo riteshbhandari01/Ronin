@@ -7,4 +7,4 @@ class Token:
         self.column = column
 
     def __repr__(self):
-        return f"Token({self.type}, {self.value})"
+        return f"Token({self.type}, {self.value} ,{self.line})"
