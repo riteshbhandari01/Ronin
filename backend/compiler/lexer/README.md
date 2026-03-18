@@ -63,22 +63,33 @@ Final states return tokens
 
 ---
 
+
+## Running Tests
+
+To run lexer tests, run the following command
+
+```bash
+  python -m tests.lexer_tests.test_lexer
+```
+
+
 ## 💻 Usage Example
 
 ```python
-from lexer import Lexer
+from backend.compiler.lexer.lexer import Lexer
+
 
 code = """
-let x = 10;
-if x > 5 {
-    x++;
-}
+let x = 10 + 20
+let str = "hello"
 """
 
 lexer = Lexer(code)
 
 while True:
+
     token = lexer.next_token()
+
     print(token)
 
     if token.type == "EOF":
@@ -88,19 +99,19 @@ while True:
 
 ## 📌 Example Output
 
-Token(keyword, let)
-Token(IDENTIFIER, x)
-Token(assig, =)
-Token(number, 10)
-Token(symbol, ;)
-Token(keyword, if)
-Token(IDENTIFIER, x)
-Token(relop, >)
-Token(number, 5)
-Token(symbol, {)
-Token(IDENTIFIER, x)
-Token(arop, ++)
-Token(symbol, ;)
+Token(keyword, let)\
+Token(IDENTIFIER, x)\
+Token(assig, =)\
+Token(number, 10)\
+Token(symbol, ;)\
+Token(keyword, if)\
+Token(IDENTIFIER, x)\
+Token(relop, >)\
+Token(number, 5)\
+Token(symbol, {)\
+Token(IDENTIFIER, x)\
+Token(arop, ++)\
+Token(symbol, ;)\
 Token(symbol, })
 
 ## ⚠️ Known Issues
