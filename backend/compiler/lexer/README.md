@@ -126,7 +126,7 @@ Token(symbol, })
 
 ## 🧩 Lexer Architecture Diagram
 
-![Lexer Architecture](images/Source_Code_Tokenization.png)
+![Lexer Architecture](image/Source_Code_Tokenization.png)
 
 
 
